@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>AEF — Arsenal Efficiency Framework</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="AEF" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="#10161D" />
+<meta name="description" content="Arsenal Efficiency Framework — pitcher evaluation dashboard" />
+<link rel="apple-touch-icon" href="data:image/png;base64,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" />
+<link rel="icon" href="data:image/png;base64,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" />
+
+<style>
+  html, body { margin: 0; padding: 0; background: #10161D; overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; }
+  body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+  * { -webkit-user-select: none; user-select: none; }
+  input, select, textarea { -webkit-user-select: text; user-select: text; }
+  #root { min-height: 100vh; }
+  #boot-loading { min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #8D98A3; font-family: system-ui, sans-serif; font-size: 14px; }
+</style>
+</head>
+<body>
+<div id="root"><div id="boot-loading">Loading AEF…</div></div>
+
+<script>
+  // Global error catcher — if anything throws during load, show it instead of
+  // hanging silently on "Loading AEF…" forever.
+  window.addEventListener('error', function (e) {
+    var boot = document.getElementById('boot-loading');
+    if (boot) {
+      boot.textContent = 'Error: ' + (e.message || 'Unknown error') +
+        (e.filename ? ' (' + e.filename.split('/').pop() + ':' + e.lineno + ')' : '');
+      boot.style.cssText = 'min-height:100vh;display:flex;align-items:center;justify-content:center;color:#C3563A;font-family:system-ui,sans-serif;font-size:13px;padding:24px;text-align:center;line-height:1.6;';
+    }
+  });
+  // Watchdog — if the app still hasn't replaced the loading screen after
+  // 9 seconds (enough time for the jsdelivr fallback to kick in if unpkg
+  // fails), report which CDN dependency (if any) never loaded.
+  setTimeout(function () {
+    var boot = document.getElementById('boot-loading');
+    if (!boot) return;
+    var reactOk = typeof React !== 'undefined';
+    var domOk = typeof ReactDOM !== 'undefined';
+    var babelOk = typeof Babel !== 'undefined';
+    var missing = [];
+    if (!reactOk) missing.push('React');
+    if (!domOk) missing.push('ReactDOM');
+    if (!babelOk) missing.push('Babel');
+    var msg = missing.length
+      ? 'Failed to load: ' + missing.join(', ') + '. Both unpkg.com and the jsdelivr.net backup failed — this points to a network-level block (firewall, DNS filtering, or a content blocker covering both CDNs) rather than a one-off glitch. Try switching networks (wifi \u2194 cellular) or a different browser.'
+      : 'Scripts loaded, but the app failed to start (a JavaScript error occurred). Try reloading — if it persists, this needs a code fix.';
+    boot.textContent = msg;
+    boot.style.cssText = 'min-height:100vh;display:flex;align-items:center;justify-content:center;color:#D9A441;font-family:system-ui,sans-serif;font-size:14px;padding:24px;text-align:center;line-height:1.6;';
+  }, 9000);
+</script>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js';document.head.appendChild(s);"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js';document.head.appendChild(s);"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js';document.head.appendChild(s);"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useMemo } = React;
+
+/* ============================================================
+   ICONS — small inline SVG components (standalone version has no
+   lucide-react available), matching names/props used throughout.
+   ============================================================ */
+function IconBase({ children, size = 16, ...rest }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+      {children}
+    </svg>
+  );
+}
+const Plus = (p) => <IconBase {...p}><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></IconBase>;
+const ChevronLeft = (p) => <IconBase {...p}><polyline points="15 18 9 12 15 6" /></IconBase>;
+const X = (p) => <IconBase {...p}><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></IconBase>;
+const Trash2 = (p) => <IconBase {...p}><polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6" /><path d="M14 11v6" /><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" /></IconBase>;
+const Pencil = (p) => <IconBase {...p}><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></IconBase>;
+const Save = (p) => <IconBase {...p}><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></IconBase>;
+const AlertCircle = (p) => <IconBase {...p}><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></IconBase>;
+const Radio = (p) => <IconBase {...p}><circle cx="12" cy="12" r="2" /><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.25a6 6 0 0 1 0-8.49m11.31-2.5a10 10 0 0 1 0 14.14M4.93 5.26a10 10 0 0 0 0 14.14" /></IconBase>;
+const Gauge = (p) => <IconBase {...p}><path d="M12 15l3.5-3.5" /><path d="M20.3 18a9 9 0 1 0-16.6 0" /></IconBase>;
+const Wind = (p) => <IconBase {...p}><path d="M9.6 4.6a2 2 0 1 1 1.4 3.4H2" /><path d="M12.6 19.4a2 2 0 1 0 1.4-3.4H2" /><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" /></IconBase>;
+const Layers = (p) => <IconBase {...p}><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></IconBase>;
+const Target = (p) => <IconBase {...p}><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></IconBase>;
+
+/* ============================================================
+   MOVEMENT PLOT — hand-rolled SVG scatter chart (standalone
+   version has no recharts available). Renders pitch movement
+   (horizontal x, vertical y) colored by velocity band, with
+   pitch-type labels shown directly (touch-friendly — no hover
+   needed on mobile).
+   ============================================================ */
+function MovementPlot({ data }) {
+  const width = 360, height = 300, pad = 34;
+  const xs = data.map((d) => d.x), ys = data.map((d) => d.y);
+  const xMin = Math.min(...xs, 0) - 6, xMax = Math.max(...xs, 0) + 6;
+  const yMin = Math.min(...ys, 0) - 6, yMax = Math.max(...ys, 0) + 6;
+  const sx = (x) => pad + ((x - xMin) / (xMax - xMin)) * (width - 2 * pad);
+  const sy = (y) => height - pad - ((y - yMin) / (yMax - yMin)) * (height - 2 * pad);
+  const colorFor = (band) => (band === "Fast" ? "#C3563A" : band === "Middle" ? "#D9A441" : "#6FA98B");
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} width="100%" height={height} style={{ display: "block" }}>
+      <line x1={pad} y1={sy(0)} x2={width - pad} y2={sy(0)} stroke="#2B3540" strokeWidth="1" />
+      <line x1={sx(0)} y1={pad} x2={sx(0)} y2={height - pad} stroke="#2B3540" strokeWidth="1" />
+      <text x={width - pad} y={sy(0) - 6} textAnchor="end" fontSize="10" fill="#6B7684" fontFamily="Inter, sans-serif">Horizontal</text>
+      <text x={sx(0) + 6} y={pad + 8} fontSize="10" fill="#6B7684" fontFamily="Inter, sans-serif">Vertical</text>
+      {data.map((d, i) => (
+        <g key={i}>
+          <circle cx={sx(d.x)} cy={sy(d.y)} r={7} fill={colorFor(d.band)} stroke="#10161D" strokeWidth="1.5" />
+          <text x={sx(d.x)} y={sy(d.y) - 12} textAnchor="middle" fontSize="10.5" fill="#EDEAE0" fontFamily="'IBM Plex Mono', monospace">{d.name}</text>
+          <text x={sx(d.x)} y={sy(d.y) + 20} textAnchor="middle" fontSize="9" fill="#8D98A3" fontFamily="'IBM Plex Mono', monospace">{d.velocity}mph</text>
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+/* ============================================================
+   STORAGE — localStorage-backed (this is a true standalone page,
+   not a Claude artifact, so browser storage is the right tool here).
+   ============================================================ */
+const storage = {
+  get: async (key) => {
+    const v = localStorage.getItem(key);
+    return v == null ? null : { key, value: v };
+  },
+  set: async (key, value) => {
+    try {
+      localStorage.setItem(key, value);
+      return { key, value };
+    } catch (e) {
+      return null;
+    }
+  },
+};
+
+/* ============================================================
+   AEF SCORING ENGINE
+   Faithfully implements Performance Efficiency Score (PES) from
+   the original workbook. Arsenal Potential Score (APS) has been
+   reconciled against the AEF v1.5 framework document's 100-point
+   structure (Movement Identity 30 / Movement Coverage 20 /
+   Velocity Architecture 20 / Pitch Interaction 30) — several of
+   these components existed only as disconnected or incomplete
+   formulas in the original sheet. Those are marked (*) below and
+   in the UI: they're calibrated constructions from the framework
+   doc, not verbatim spreadsheet formulas. Role Fit (Part IV) is
+   entirely a (*) construction, since the sheet never implemented it.
+   ============================================================ */
+
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+const num = (v) => (v === "" || v === null || v === undefined ? NaN : parseFloat(v));
+const safe = (v, fallback = 0) => (isNaN(v) ? fallback : v);
+
+function percentileRank(arr, value) {
+  const n = arr.length;
+  if (n <= 1) return 1;
+  const below = arr.filter((v) => v < value).length;
+  const equal = arr.filter((v) => v === value).length;
+  return (below + 0.5 * equal) / n;
+}
+
+// Workload is scored relative to the rest of the saved roster (innings & batters
+// faced percentile) rather than fixed season-long targets — this way a mid-season
+// pull for a workhorse still reads correctly rather than defaulting toward 0.
+function computeWorkload(ip, bf, peers) {
+  if (!peers || peers.length === 0) {
+    const ipScore = clamp((ip / 15) * 5, 0, 5);
+    const bfScore = clamp((bf / 60) * 5, 0, 5);
+    return clamp(ipScore + bfScore, 0, 10);
+  }
+  const ipAll = [...peers.map((p) => p.ip), ip];
+  const bfAll = [...peers.map((p) => p.bf), bf];
+  const ipPct = percentileRank(ipAll, ip);
+  const bfPct = percentileRank(bfAll, bf);
+  return clamp((ipPct * 0.6 + bfPct * 0.4) * 10, 0, 10);
+}
+
+function computePES(p, peers) {
+  const ip = safe(num(p.ip));
+  const bf = safe(num(p.bf));
+  const hits = safe(num(p.hits));
+  const walks = safe(num(p.walks));
+  const bb = bf > 0 ? walks / bf : 0;
+  const hitsPerIP = ip > 0 ? hits / ip : 0;
+  const whip = ip > 0 ? (hits + walks) / ip : 0;
+  const fpsTerm = clamp((safe(num(p.fpsPct)) / 100) * 10, 0, 10);
+  // FPSW%: of at-bats that reach 0-1, the % that end in a walk. Lower is better —
+  // it measures whether the pitcher presses the advantage after a first-pitch strike
+  // or gives it back. Scale: 0% -> 10, 8%+ -> 0. (*)
+  const fpswPct = safe(num(p.fpswPct));
+  const fpsbbTerm = clamp((8 - fpswPct) * (10 / 8), 0, 10);
+  const weak = safe(num(p.weakContactPct)) / 100;
+  const risp = safe(num(p.baaRisp));
+
+  // Hit Rate and Walk Rate are scored as independent 0-10 components rather than
+  // one blended WHIP term, since WHIP can mask whether a pitcher's traffic problem
+  // is control (walks) or quality-of-contact (hits) — or, worse, both at once.
+  const hitRate = clamp((1.5 - hitsPerIP) * 10, 0, 10);
+  const walkRateTerm = clamp((0.15 - bb) * (10 / 0.15), 0, 10);
+
+  const efficiency = clamp(hitRate + walkRateTerm + fpsTerm + fpsbbTerm, 0, 40);
+  const contactSuppression = clamp((weak * 30) / 0.45, 0, 30);
+  const situational = clamp((0.4 - risp) * 50, 0, 20);
+  const workload = computeWorkload(ip, bf, peers);
+  const total = efficiency + contactSuppression + situational + workload;
+
+  return { efficiency, contactSuppression, situational, workload, total, bbRate: bb, whip, hitsPerIP, hitRate, walkRateTerm, fpsTerm, fpsbbTerm };
+}
+
+function computeAPS(pitches) {
+  const usable = pitches.filter((p) => p.velocity !== "" && p.velocity != null && !isNaN(parseFloat(p.velocity)));
+  if (usable.length === 0) return null;
+
+  const H = usable.map((p) => safe(num(p.horz)));
+  const V = usable.map((p) => safe(num(p.vert)));
+  const VEL = usable.map((p) => num(p.velocity));
+
+  const maxV = Math.max(...VEL), minV = Math.min(...VEL);
+  const maxH = Math.max(...H), minH = Math.min(...H);
+  const maxVert = Math.max(...V), minVert = Math.min(...V);
+
+  const bands = VEL.map((v) => {
+    const r = v / maxV;
+    return r >= 0.9 ? "Fast" : r >= 0.85 ? "Middle" : "Slow";
+  });
+  const nFast = bands.filter((b) => b === "Fast").length;
+  const nMid = bands.filter((b) => b === "Middle").length;
+  const nSlow = bands.filter((b) => b === "Slow").length;
+
+  // Velocity Architecture (0/20) — band diversity (workbook formula) + velocity spread (*)
+  let bandDiversity;
+  if (nFast > 0 && nMid > 0 && nSlow > 0) bandDiversity = 10;
+  else if ((nFast > 0 && nMid > 0) || (nFast > 0 && nSlow > 0) || (nMid > 0 && nSlow > 0)) bandDiversity = 7;
+  else bandDiversity = 2;
+  const velocitySpread = clamp(((maxV - minV) / 20) * 10, 0, 10); // (*)
+  const velocityArchitecture = clamp(bandDiversity + velocitySpread, 0, 20);
+
+  // Movement Coverage (0/20) — workbook formula, verbatim
+  const movementCoverage = clamp((((maxH - minH) + (maxVert - minVert)) / 40) * 20, 0, 20);
+
+  // Orientation classification — fixed from the sheet's bug (which hardcoded "Vertical")
+  const orientations = usable.map((p) =>
+    Math.abs(safe(num(p.vert))) >= Math.abs(safe(num(p.horz))) ? "Vertical" : "Horizontal"
+  );
+  const nVert = orientations.filter((o) => o === "Vertical").length;
+  const nHorz = orientations.filter((o) => o === "Horizontal").length;
+  const identityClarity = clamp(Math.max(nVert / usable.length, nHorz / usable.length) * 10, 0, 10);
+
+  // Pairwise movement / velocity distances
+  const pairs = [];
+  for (let i = 0; i < usable.length; i++) {
+    for (let j = i + 1; j < usable.length; j++) {
+      const moveDist = Math.sqrt((H[i] - H[j]) ** 2 + (V[i] - V[j]) ** 2);
+      const universalDist = (moveDist + Math.abs(VEL[i] - VEL[j])) / 2;
+      pairs.push({
+        moveDist,
+        universalDist,
+        nameA: usable[i].type || `Pitch ${i + 1}`,
+        nameB: usable[j].type || `Pitch ${j + 1}`,
+      });
+    }
+  }
+  const closestPair = pairs.length ? pairs.reduce((a, b) => (b.universalDist < a.universalDist ? b : a)) : null;
+  const avgMoveDist = pairs.length ? pairs.reduce((s, p) => s + p.moveDist, 0) / pairs.length : 0;
+  const avgUniversalDist = pairs.length ? pairs.reduce((s, p) => s + p.universalDist, 0) / pairs.length : 0;
+  const avgMagnitude = usable.reduce((s, p, i) => s + Math.sqrt(H[i] ** 2 + V[i] ** 2), 0) / usable.length;
+
+  const primarySeparation = clamp((avgMoveDist / 25) * 10, 0, 10); // (*)
+  const executionPotential = clamp((avgMagnitude / 15) * 10, 0, 10); // (*)
+  const movementIdentityTotal = clamp(primarySeparation + identityClarity + executionPotential, 0, 30);
+
+  // Pitch Interaction Potential (0/30) — from the "Pitch Interaction Potential Cal" sheet's intent
+  const relationshipQuality = clamp((avgUniversalDist / 20) * 10, 0, 10);
+  const diversityCount = [nVert > 0, nHorz > 0, nSlow > 0, nMid > 0, nFast > 0].filter(Boolean).length;
+  const functionalDiversity = clamp((diversityCount / 5) * 10, 0, 10); // (*) sheet's own formula was broken
+  const closePairs = pairs.filter((p) => p.universalDist < 5).length;
+  const redundancyEfficiency = clamp(10 - closePairs * 3.5, 0, 10);
+  const pitchInteractionTotal = clamp(relationshipQuality + functionalDiversity + redundancyEfficiency, 0, 30);
+
+  const total = clamp(movementIdentityTotal + movementCoverage + velocityArchitecture + pitchInteractionTotal, 0, 100);
+
+  // Arsenal type is weighted by movement magnitude, not raw pitch count — a single
+  // big sweeper should tip the label toward "Horizontal" even against a vertical 4-seam.
+  const totalHorzMag = H.reduce((s, v) => s + Math.abs(v), 0);
+  const totalVertMag = V.reduce((s, v) => s + Math.abs(v), 0);
+  const arsenalType = totalHorzMag > totalVertMag * 1.1 ? "Horizontal" : totalVertMag > totalHorzMag * 1.1 ? "Vertical" : "Balanced";
+  const pitchTypesPresent = usable.map((p) => (p.type || "").toLowerCase());
+
+  // Separate, tighter velocity-band cutoffs used only by the pitch-suggestion engine —
+  // the main Velocity Architecture score keeps its original 0.90/0.85 bands untouched.
+  const suggBands = VEL.map((v) => {
+    const r = v / maxV;
+    return r >= 0.95 ? "Fast" : r >= 0.9 ? "Middle" : "Slow";
+  });
+  const suggestionBands = {
+    nFast: suggBands.filter((b) => b === "Fast").length,
+    nMid: suggBands.filter((b) => b === "Middle").length,
+    nSlow: suggBands.filter((b) => b === "Slow").length,
+  };
+
+  return {
+    movementIdentity: { primarySeparation, identityClarity, executionPotential, total: movementIdentityTotal },
+    movementCoverage,
+    velocityArchitecture: { bandDiversity, velocitySpread, total: velocityArchitecture },
+    pitchInteraction: { relationshipQuality, functionalDiversity, redundancyEfficiency, total: pitchInteractionTotal },
+    total,
+    usableCount: usable.length,
+    maxVelocity: maxV,
+    avgMagnitude,
+    bands: { nFast, nMid, nSlow },
+    closestPair,
+    arsenalType,
+    pitchTypesPresent,
+    suggestionBands,
+    plotData: usable.map((p, i) => ({ name: p.type || `Pitch ${i + 1}`, x: H[i], y: V[i], velocity: VEL[i], band: bands[i] })),
+  };
+}
+
+function computeAEI(pes, aps) {
+  if (!aps || aps.total === 0) return null;
+  return pes.total / aps.total;
+}
+
+function aeiInfo(aei) {
+  if (aei == null) return { label: "No arsenal data", tone: "muted" };
+  if (aei >= 1.15) return { label: "Elite Maximizer", tone: "good" };
+  if (aei >= 1.05) return { label: "Above Expected", tone: "good" };
+  if (aei >= 0.95) return { label: "Performing to Potential", tone: "neutral" };
+  if (aei >= 0.85) return { label: "Underperforming Arsenal", tone: "warn" };
+  return { label: "Significant Underperformance", tone: "bad" };
+}
+
+function diagnose(pesTotal, apsTotal) {
+  const HIGH = 70;
+  const highAPS = apsTotal >= HIGH, highPES = pesTotal >= HIGH;
+  if (highAPS && !highPES)
+    return { name: "Execution Opportunity", desc: "The pitcher owns quality tools but is not maximizing them.", focus: ["Command", "Mechanics", "Consistency", "Strike execution"] };
+  if (!highAPS && highPES)
+    return { name: "Arsenal Development Opportunity", desc: "The pitcher is maximizing limited tools.", focus: ["Add movement", "Create separation", "Improve pitch design"] };
+  if (highAPS && highPES)
+    return { name: "Complete Arsenal", desc: "Strong tools backed by strong execution.", focus: ["Refinement", "Health", "Optimization"] };
+  return { name: "Foundation Development Needed", desc: "Both tools and execution need development.", focus: ["Pitch design", "Command foundation", "Arsenal restructuring"] };
+}
+
+function computeRoleFit(pes, aps) {
+  if (!aps) return null;
+  const coverage100 = clamp((aps.movementCoverage / 20) * 100, 0, 100);
+  const interaction100 = clamp((aps.pitchInteraction.total / 30) * 100, 0, 100);
+  const velArch100 = clamp((aps.velocityArchitecture.total / 20) * 100, 0, 100);
+  const contactSup100 = clamp((pes.contactSuppression / 30) * 100, 0, 100);
+  const count4 = clamp((aps.usableCount / 4) * 100, 0, 100);
+  const count3 = clamp((aps.usableCount / 3) * 100, 0, 100);
+  const velNorm = clamp(((aps.maxVelocity - 55) / (100 - 55)) * 100, 0, 100);
+  const magNorm = clamp((aps.avgMagnitude / 25) * 100, 0, 100);
+  const primaryWeapon = clamp(velNorm * 0.5 + magNorm * 0.5, 0, 100);
+
+  const toLabel = (s) => (s >= 85 ? "Elite Fit" : s >= 70 ? "Excellent Fit" : s >= 55 ? "Good Fit" : s >= 40 ? "Moderate Fit" : "Limited Fit");
+
+  return [
+    { role: "Starter", score: clamp(0.35 * count4 + 0.35 * coverage100 + 0.3 * velArch100, 0, 100) },
+    { role: "Multi-Inning Reliever", score: clamp(0.3 * count3 + 0.4 * contactSup100 + 0.3 * coverage100, 0, 100) },
+    { role: "High-Leverage Reliever", score: clamp(0.5 * interaction100 + 0.5 * primaryWeapon, 0, 100) },
+    { role: "Closer", score: clamp(0.55 * primaryWeapon + 0.25 * interaction100 + 0.2 * velArch100, 0, 100) },
+  ].map((r) => ({ ...r, label: toLabel(r.score) }));
+}
+
+/* ============================================================
+   PITCH ADDITION SUGGESTIONS (*)
+   Rule-based: looks at arsenal type (Horizontal/Vertical/Balanced)
+   and velocity-band gaps (Fast/Middle/Slow) to suggest what a pitcher
+   could add next, ranked by likely helpfulness (2-5 suggestions).
+   ============================================================ */
+
+function hasType(pitchTypesPresent, keywords) {
+  return pitchTypesPresent.some((t) => keywords.some((k) => t.includes(k)));
+}
+
+function generatePitchSuggestions(aps) {
+  if (!aps || aps.usableCount === 0) return [];
+  const { arsenalType, suggestionBands, pitchTypesPresent, movementCoverage } = aps;
+  const { nFast, nMid, nSlow } = suggestionBands;
+  const out = [];
+
+  // Rule 1: no true off-speed/breaking pitch in the Slow band
+  if (nSlow === 0 && nFast > 0) {
+    if (arsenalType === "Horizontal") {
+      out.push({ pitch: "Sweeper", reason: "No true off-speed offering exists yet, and the mix already leans horizontal — a sweeper extends that shape into its own velocity band and becomes a real timing weapon rather than just another fastball-speed pitch.", priority: 100 });
+      out.push({ pitch: "Curveball", reason: "An alternate off-speed path if he prefers a more traditional vertical break and velocity gap over extending the horizontal shape.", priority: 95 });
+    } else if (arsenalType === "Vertical") {
+      out.push({ pitch: "Curveball", reason: "Continues the arsenal's vertical shape into the slow band, creating real velocity and movement separation from the harder pitches.", priority: 100 });
+      out.push({ pitch: "Changeup", reason: "Adds velocity separation while still tunneling well off the fastball shape.", priority: 95 });
+    } else {
+      out.push({ pitch: "Changeup", reason: "A safe, generalist off-speed offering to open up a velocity band this arsenal doesn't currently have.", priority: 100 });
+      out.push({ pitch: "Sweeper or Curveball", reason: "Whichever plane — horizontal or vertical — he already trusts more is the more natural fit to build the slow-band pitch around.", priority: 90 });
+    }
+  }
+
+  // Rule 2: has both hard and soft stuff, but nothing bridging the middle
+  if (nMid === 0 && nFast > 0 && nSlow > 0) {
+    if (arsenalType === "Horizontal") {
+      out.push({ pitch: "Cutter (Middle Velocity)", reason: "Bridges the gap between the fastball and the slower breaking ball, giving hitters a distinct timing read in between.", priority: 90 });
+      out.push({ pitch: "Gyro Slider", reason: "Same bridging effect as the cutter — a tight, minimal-movement shape occupying that same open velocity window.", priority: 85 });
+    } else if (arsenalType === "Vertical") {
+      out.push({ pitch: "Gyro Slider", reason: "A tight, velocity-bridging pitch to fill the open middle window without disrupting the arsenal's vertical shape identity.", priority: 90 });
+      out.push({ pitch: "Cutter", reason: "An alternate bridge option in the same velocity window.", priority: 85 });
+    } else {
+      out.push({ pitch: "Cutter", reason: "A natural bridge pitch to fill the open middle-velocity window.", priority: 88 });
+    }
+  }
+
+  // Rule 3: horizontal-dominant arsenal missing a fading change-of-pace
+  if (arsenalType === "Horizontal" && !hasType(pitchTypesPresent, ["changeup", "splitter"])) {
+    out.push({ pitch: "Changeup or Splitter", reason: "Choice depends on the pitcher's supination/pronation bias and grip comfort — either would give a fading, velocity-separated weapon that continues the arm-side movement theme, particularly valuable against opposite-handed hitters.", priority: 70 });
+  }
+
+  // Rule 4: vertical-dominant arsenal without a true four-seam to anchor the top of the zone
+  if (arsenalType === "Vertical" && !hasType(pitchTypesPresent, ["4-seam", "four-seam", "four seam"])) {
+    out.push({ pitch: "4-Seam Fastball (built around induced vertical break)", reason: "Would give him a true weapon at the top of the zone and add vertical separation from the sinker/curveball shapes already in the mix.", priority: 70 });
+  }
+
+  // Fallback: movement coverage is thin and nothing else has fired yet
+  if (out.length < 2 && movementCoverage < 12) {
+    const under = arsenalType === "Horizontal" ? "vertical" : "horizontal";
+    out.push({ pitch: `A pitch on the underused ${under} plane`, reason: `The arsenal currently occupies a narrow slice of the movement spectrum — adding a pitch that attacks the ${under} plane would force hitters to defend more locations.`, priority: 40 });
+  }
+
+  // De-dupe by pitch name (keep highest-priority version), sort, cap 2-5
+  const seen = new Map();
+  for (const s of out) {
+    if (!seen.has(s.pitch) || seen.get(s.pitch).priority < s.priority) seen.set(s.pitch, s);
+  }
+  return Array.from(seen.values()).sort((a, b) => b.priority - a.priority).slice(0, 5);
+}
+
+/* ============================================================
+   HANDEDNESS-TROUBLE SUGGESTIONS (*)
+   Coach reports "struggles vs LHB/RHB" — a qualitative flag, not a
+   stat AEF computes. From there this applies standard arm-side vs.
+   glove-side pitch mechanics relative to the pitcher's own throwing
+   hand: opposite-handed hitters get away/down movement (Changeup,
+   Splitter, Forkball, Curveball — deliberately never Sweeper, since
+   glove-side sweep tends to back up into an opposite-handed hitter's
+   zone), same-handed hitters get glove-side breakers that already
+   run away from them (Sweeper, Curveball, Cutter).
+   ============================================================ */
+
+function generateHandednessSuggestions(player, aps) {
+  if (!aps || !player.handednessTrouble || player.handednessTrouble === "none") return [];
+  const present = aps.pitchTypesPresent || [];
+  const has = (kw) => present.some((t) => t.includes(kw));
+  const throwsR = player.throws === "R";
+  const struggles = player.handednessTrouble === "both" ? ["lhb", "rhb"] : [player.handednessTrouble];
+  const sections = [];
+
+  for (const struggle of struggles) {
+    const isOpposite = (throwsR && struggle === "lhb") || (!throwsR && struggle === "rhb");
+    const batter = struggle === "lhb" ? "LHB" : "RHB";
+
+    if (isOpposite) {
+      const candidates = [
+        { key: "changeup", pitch: "Changeup", reason: `Arm-side fade moves this away from a ${batter}, and the speed change disrupts timing without putting the barrel in danger.` },
+        { key: "splitter", pitch: "Splitter", reason: `Tumbles down and away from a ${batter} — hard to lift even when the location isn't perfect.` },
+        { key: "forkball", pitch: "Forkball", reason: `Similar down-and-away action to a splitter, with even more depth — worth considering if he's comfortable generating that grip/action.` },
+        { key: "curveball", pitch: "Curveball", reason: `Big vertical drop keeps it out of the ${batter}'s damage zone even without much horizontal separation.` },
+      ].filter((c) => !has(c.key));
+      const cutterReason = has("cutter")
+        ? `He already throws a cutter — locating it up and in against a ${batter} (rather than letting it drift out over the plate) is the safer way to use it here.`
+        : `A cutter's usual glove-side break is risky against a ${batter}, but located up and in off the hands it can still play — this is a location fix, not a shape one.`;
+      sections.push({
+        title: `vs ${batter} (opposite-handed)`,
+        note: `Sweepers are intentionally left off this list — glove-side sweep tends to back up into a ${batter}'s zone and get hit hard.`,
+        items: [...candidates.slice(0, 4), { pitch: "Cutter (if located up/in)", reason: cutterReason }],
+      });
+    } else {
+      const candidates = [
+        { key: "sweeper", pitch: "Sweeper", reason: `Big glove-side sweep starts inside and runs away from a ${batter} — the standard same-side weapon.` },
+        { key: "curveball", pitch: "Curveball", reason: `Glove-side break with more depth than a sweeper — a different shape working the same away-from-${batter} angle.` },
+        { key: "cutter", pitch: "Cutter", reason: `A tighter, faster glove-side option — still moves away from a ${batter}, playing off fastball velocity instead of a big shape change.` },
+      ].filter((c) => !has(c.key));
+
+      if (candidates.length === 0) {
+        const planeCandidates = ["sinker", "splitter", "changeup"].filter((k) => !has(k));
+        const planeLabel = { sinker: "Sinker", splitter: "Splitter", changeup: "Changeup" };
+        const items = [{ pitch: "Refine command / sequencing", reason: `He already has the standard away-breaking weapons (Sweeper, Curveball, Cutter) — this reads more like a command or sequencing issue against a ${batter} than a missing pitch. Tightening execution and tunneling off the existing shapes should come first.` }];
+        if (planeCandidates.length) {
+          items.push({ pitch: planeCandidates.map((k) => planeLabel[k]).join(" / "), reason: `As a secondary option, opening an arm-side plane would give a genuinely different look rather than another variation on the same away-breaking shape.` });
+        }
+        sections.push({ title: `vs ${batter} (same-handed)`, note: null, items });
+      } else {
+        sections.push({ title: `vs ${batter} (same-handed)`, note: null, items: candidates });
+      }
+    }
+  }
+
+  return sections;
+}
+
+
+/* ============================================================
+   DEVELOPMENT RECOMMENDATION (*)
+   Drills into which specific sub-component is dragging PES or APS
+   down, and phrases an actionable reason — not just "low" or "high."
+   This is a heuristic layer built on top of the framework's own
+   category breakdown; it isn't a formula from the workbook.
+   ============================================================ */
+
+const pctOf = (v, max) => (max > 0 ? v / max : 0);
+
+function executionReason(pes, perf) {
+  const entries = [
+    { k: "efficiency", v: pctOf(pes.efficiency, 40) },
+    { k: "contact", v: pctOf(pes.contactSuppression, 30) },
+    { k: "situational", v: pctOf(pes.situational, 20) },
+  ].sort((a, b) => a.v - b.v);
+  const weakest = entries[0].k;
+
+  if (weakest === "efficiency") {
+    const subs = [
+      { k: "hit", v: pes.hitRate },
+      { k: "walk", v: pes.walkRateTerm },
+      { k: "fps", v: pes.fpsTerm },
+      { k: "fpsbb", v: pes.fpsbbTerm },
+    ].sort((a, b) => a.v - b.v);
+    const [worst, second] = subs;
+    const bothTrafficBad =
+      (worst.k === "hit" || worst.k === "walk") &&
+      (second.k === "hit" || second.k === "walk") &&
+      worst.v < 5 && second.v < 5;
+
+    if (bothTrafficBad) {
+      return `Both hits and walks allowed are elevated (derived WHIP ${pes.whip.toFixed(2)}) — command and quality-of-contact are compounding here rather than one clean fixable habit. This is more of a foundational execution issue than a single adjustment.`;
+    }
+    if (worst.k === "walk") return "This pitcher most likely needs to focus on increasing competition in the strike zone — free passes are the biggest drag on this score, more so than the contact he's allowing.";
+    if (worst.k === "hit") return "Hits allowed per inning are the main drag here — batters are finding too much contact even when he's around the zone. This points more toward pitch quality or weak-contact ability than pure control.";
+    if (worst.k === "fps") return "First-pitch strike rate is the main drag — getting ahead in counts early should be the priority.";
+    return "Too many at-bats that start 0-1 are still ending in a walk — this pitcher is getting ahead early but not pressing that advantage. Attacking the zone more aggressively once ahead should be the priority.";
+  }
+  if (weakest === "contact") {
+    return "Contact suppression is the main drag — locating pitches to induce weaker contact, rather than simply avoiding the zone, should be the focus.";
+  }
+  return "Performance narrows significantly in RISP situations — sequencing and execution in those counts should be the focus.";
+}
+
+function arsenalReason(aps) {
+  const entries = [
+    { k: "mi", v: pctOf(aps.movementIdentity.total, 30) },
+    { k: "mc", v: pctOf(aps.movementCoverage, 20) },
+    { k: "va", v: pctOf(aps.velocityArchitecture.total, 20) },
+    { k: "pi", v: pctOf(aps.pitchInteraction.total, 30) },
+  ].sort((a, b) => a.v - b.v);
+  const weakest = entries[0].k;
+
+  if (weakest === "mi") {
+    const { primarySeparation, identityClarity, executionPotential } = aps.movementIdentity;
+    const subs = [
+      { k: "clarity", v: identityClarity },
+      { k: "sep", v: primarySeparation },
+      { k: "exec", v: executionPotential },
+    ].sort((a, b) => a.v - b.v);
+    const w = subs[0].k;
+    if (w === "clarity") return "The arsenal doesn't yet commit to a clear movement plane — leaning further into either vertical or horizontal shapes would sharpen its identity.";
+    if (w === "sep") return "The pitches cluster too closely together in shape — increasing separation between the two most similar offerings would help more than adding a new pitch.";
+    return "Movement quality across the arsenal is underwhelming — this likely points to pitch design or grip adjustments on existing pitches rather than adding a new one.";
+  }
+  if (weakest === "mc") {
+    return "The arsenal occupies a narrow slice of the movement spectrum — adding or refining a pitch that attacks an unused plane would force hitters to defend more locations.";
+  }
+  if (weakest === "va") {
+    if (aps.velocityArchitecture.bandDiversity <= 2) {
+      return "Every pitch sits in roughly the same velocity band — developing a true off-speed offering would create a timing disruption this arsenal is missing.";
+    }
+    return "The velocity gaps between pitches are too tight to disrupt timing — widening the gap between the hardest and softest offering would help.";
+  }
+  const { redundancyEfficiency, functionalDiversity, relationshipQuality } = aps.pitchInteraction;
+  const subs = [
+    { k: "red", v: redundancyEfficiency },
+    { k: "div", v: functionalDiversity },
+    { k: "rel", v: relationshipQuality },
+  ].sort((a, b) => a.v - b.v);
+  const w = subs[0].k;
+  if (w === "red" && aps.closestPair) {
+    return `The ${aps.closestPair.nameA} and ${aps.closestPair.nameB} occupy nearly the same shape and velocity — consolidating or clearly differentiating one of them would add more value than adding another pitch.`;
+  }
+  if (w === "div") return "The arsenal's pitches serve overlapping functions — developing a pitch that changes speed, plane, or shape relative to the rest would add more value than refining what's already there.";
+  return "The current pitches don't create meaningful contrast with each other — prioritizing shape or velocity separation between the top two offerings would help.";
+}
+
+function developmentInsight(pes, aps, diag, perf) {
+  if (!aps) {
+    return { primary: "Pitch data hasn't been entered yet, so arsenal-side recommendations aren't available.", secondary: [executionReason(pes, perf)] };
+  }
+  const apsPct = aps.total / 100, pesPct = pes.total / 100;
+
+  if (diag.name === "Execution Opportunity") {
+    return { primary: "Pitch addition or adjustment is likely not the main concern — the arsenal here already grades well.", secondary: [executionReason(pes, perf)] };
+  }
+  if (diag.name === "Arsenal Development Opportunity") {
+    return { primary: "Execution and strike-throwing are not the main concern — this pitcher is already getting the most from his current stuff.", secondary: [arsenalReason(aps)] };
+  }
+  if (diag.name === "Complete Arsenal") {
+    const weaker = apsPct <= pesPct ? "arsenal" : "execution";
+    const tip = weaker === "arsenal" ? arsenalReason(aps) : executionReason(pes, perf);
+    return { primary: "Both arsenal quality and execution grade well here — this is a refinement and consistency case, not a rebuild.", secondary: [`If chasing marginal gains: ${tip}`] };
+  }
+  const order = apsPct <= pesPct ? [arsenalReason(aps), executionReason(pes, perf)] : [executionReason(pes, perf), arsenalReason(aps)];
+  return { primary: "Both arsenal quality and execution need development here — pick one lever at a time rather than overhauling everything at once.", secondary: order };
+}
+
+
+
+const PITCH_TYPES = ["4-Seam", "Sinker", "Cutter", "Slider", "Sweeper", "Curveball", "Changeup", "Splitter", "Forkball", "Other"];
+const STORAGE_KEY = "aef-players";
+
+function makeId() {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    try { return crypto.randomUUID(); } catch (e) { /* fall through */ }
+  }
+  return "id-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
+}
+const emptyPitch = () => ({ id: makeId(), type: "", horz: "", vert: "", velocity: "" });
+const emptyPlayer = () => ({
+  id: makeId(),
+  name: "",
+  throws: "R",
+  armSlot: "",
+  role: "",
+  evalDate: new Date().toISOString().slice(0, 10),
+  handednessTrouble: "none",
+  perf: { ip: "", bf: "", hits: "", walks: "", pitchesPerBF: "", fpsPct: "", fpswPct: "", weakContactPct: "", baaRisp: "" },
+  pitches: [emptyPitch(), emptyPitch(), emptyPitch(), emptyPitch()],
+});
+
+const toneColor = { good: "#6FA98B", neutral: "#D9A441", warn: "#D9A441", bad: "#C3563A", muted: "#6B7684" };
+
+function fmt(n, d = 1) { return typeof n === "number" && !isNaN(n) ? n.toFixed(d) : "—"; }
+
+/* ============================================================
+   SMALL UI PRIMITIVES
+   ============================================================ */
+
+function ScoreBar({ label, value, max, tone = "#D9A441", sub }) {
+  const pct = clamp((value / max) * 100, 0, 100);
+  return (
+    <div className="scorebar">
+      <div className="scorebar-head">
+        <span className="scorebar-label">{label}</span>
+        <span className="scorebar-value">{fmt(value)} <span className="scorebar-max">/ {max}</span></span>
+      </div>
+      <div className="scorebar-track">
+        <div className="scorebar-fill" style={{ width: `${pct}%`, background: tone }} />
+      </div>
+      {sub && <div className="scorebar-sub">{sub}</div>}
+    </div>
+  );
+}
+
+function Field({ label, children, hint }) {
+  return (
+    <label className="field">
+      <span className="field-label">{label}</span>
+      {children}
+      {hint && <span className="field-hint">{hint}</span>}
+    </label>
+  );
+}
+
+/* ============================================================
+   PLAYER FORM
+   ============================================================ */
+
+function PlayerForm({ initial, onCancel, onSave }) {
+  const [player, setPlayer] = useState(initial);
+
+  const updatePerf = (key, val) => setPlayer((p) => ({ ...p, perf: { ...p.perf, [key]: val } }));
+  const updatePitch = (id, key, val) => setPlayer((p) => ({ ...p, pitches: p.pitches.map((pt) => (pt.id === id ? { ...pt, [key]: val } : pt)) }));
+  const addPitch = () => setPlayer((p) => ({ ...p, pitches: [...p.pitches, emptyPitch()] }));
+  const removePitch = (id) => setPlayer((p) => ({ ...p, pitches: p.pitches.filter((pt) => pt.id !== id) }));
+
+  const canSave = player.name.trim().length > 0;
+
+  return (
+    <div className="panel form-panel">
+      <div className="form-header">
+        <h2>{initial.name ? "Edit Player" : "New Player"}</h2>
+        <button className="icon-btn" onClick={onCancel} aria-label="Cancel"><X size={18} /></button>
+      </div>
+
+      <div className="form-section">
+        <h3><Radio size={14} /> Player Information</h3>
+        <div className="grid grid-4">
+          <Field label="Player Name">
+            <input value={player.name} onChange={(e) => setPlayer((p) => ({ ...p, name: e.target.value }))} placeholder="e.g. Brennan" />
+          </Field>
+          <Field label="Throws">
+            <select value={player.throws} onChange={(e) => setPlayer((p) => ({ ...p, throws: e.target.value }))}>
+              <option value="R">Right</option>
+              <option value="L">Left</option>
+            </select>
+          </Field>
+          <Field label="Arm Slot">
+            <input value={player.armSlot} onChange={(e) => setPlayer((p) => ({ ...p, armSlot: e.target.value }))} placeholder="e.g. High 3/4" />
+          </Field>
+          <Field label="Current Role">
+            <input value={player.role} onChange={(e) => setPlayer((p) => ({ ...p, role: e.target.value }))} placeholder="e.g. Starter" />
+          </Field>
+          <Field label="Evaluation Date">
+            <input type="date" value={player.evalDate} onChange={(e) => setPlayer((p) => ({ ...p, evalDate: e.target.value }))} />
+          </Field>
+          <Field label="Batter-Handedness Trouble" hint="Coach-reported — not derived from stats">
+            <select value={player.handednessTrouble} onChange={(e) => setPlayer((p) => ({ ...p, handednessTrouble: e.target.value }))}>
+              <option value="none">None noted</option>
+              <option value="lhb">Struggles vs LHB</option>
+              <option value="rhb">Struggles vs RHB</option>
+              <option value="both">Struggles vs Both</option>
+            </select>
+          </Field>
+        </div>
+      </div>
+
+      <div className="form-section">
+        <h3><Gauge size={14} /> Performance Data</h3>
+        <div className="grid grid-4">
+          <Field label="Innings Pitched"><input inputMode="decimal" value={player.perf.ip} onChange={(e) => updatePerf("ip", e.target.value)} placeholder="5.0" /></Field>
+          <Field label="Batters Faced"><input inputMode="decimal" value={player.perf.bf} onChange={(e) => updatePerf("bf", e.target.value)} placeholder="32" /></Field>
+          <Field label="Hits Allowed"><input inputMode="decimal" value={player.perf.hits} onChange={(e) => updatePerf("hits", e.target.value)} placeholder="9" /></Field>
+          <Field label="Total Walks"><input inputMode="decimal" value={player.perf.walks} onChange={(e) => updatePerf("walks", e.target.value)} placeholder="3" /></Field>
+          <Field label="Pitches / Batter Faced"><input inputMode="decimal" value={player.perf.pitchesPerBF} onChange={(e) => updatePerf("pitchesPerBF", e.target.value)} placeholder="3.8" /></Field>
+          <Field label="First Pitch Strike %"><input inputMode="decimal" value={player.perf.fpsPct} onChange={(e) => updatePerf("fpsPct", e.target.value)} placeholder="62.5" /></Field>
+          <Field label="FPSW% (walks from 0-1 counts)" hint="% of at-bats starting 0-1 that end in a walk — lower is better">
+            <input inputMode="decimal" value={player.perf.fpswPct} onChange={(e) => updatePerf("fpswPct", e.target.value)} placeholder="4.5" />
+          </Field>
+          <Field label="Weak Contact %"><input inputMode="decimal" value={player.perf.weakContactPct} onChange={(e) => updatePerf("weakContactPct", e.target.value)} placeholder="18.2" /></Field>
+          <Field label="BAA with RISP"><input inputMode="decimal" value={player.perf.baaRisp} onChange={(e) => updatePerf("baaRisp", e.target.value)} placeholder=".220" /></Field>
+        </div>
+      </div>
+
+      <div className="form-section">
+        <div className="form-section-head">
+          <h3><Wind size={14} /> Pitch Arsenal</h3>
+          <button className="ghost-btn" onClick={addPitch}><Plus size={14} /> Add Pitch</button>
+        </div>
+        <div className="pitch-table">
+          <div className="pitch-row pitch-row-head">
+            <span>Type</span><span>Horz (X)</span><span>Vert (Y)</span><span>Velocity</span><span></span>
+          </div>
+          {player.pitches.map((pt) => (
+            <div className="pitch-row" key={pt.id}>
+              <select value={pt.type} onChange={(e) => updatePitch(pt.id, "type", e.target.value)}>
+                <option value="">Select...</option>
+                {PITCH_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+              </select>
+              <input inputMode="decimal" value={pt.horz} onChange={(e) => updatePitch(pt.id, "horz", e.target.value)} placeholder="15" />
+              <input inputMode="decimal" value={pt.vert} onChange={(e) => updatePitch(pt.id, "vert", e.target.value)} placeholder="15" />
+              <input inputMode="decimal" value={pt.velocity} onChange={(e) => updatePitch(pt.id, "velocity", e.target.value)} placeholder="74" />
+              <button className="icon-btn" onClick={() => removePitch(pt.id)} aria-label="Remove pitch"><Trash2 size={15} /></button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="form-footer">
+        <button className="ghost-btn" onClick={onCancel}>Cancel</button>
+        <button className="primary-btn" disabled={!canSave} onClick={() => onSave(player)}><Save size={15} /> Save Player</button>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   PLAYER DETAIL
+   ============================================================ */
+
+function PlayerDetail({ player, allPlayers, onBack, onEdit, onDelete }) {
+  const peers = useMemo(
+    () => allPlayers.filter((p) => p.id !== player.id).map((p) => ({ ip: safe(num(p.perf.ip)), bf: safe(num(p.perf.bf)) })),
+    [allPlayers, player.id]
+  );
+  const pes = useMemo(() => computePES(player.perf, peers), [player, peers]);
+  const aps = useMemo(() => computeAPS(player.pitches), [player]);
+  const aei = useMemo(() => computeAEI(pes, aps), [pes, aps]);
+  const aeiMeta = aeiInfo(aei);
+  const diag = aps ? diagnose(pes.total, aps.total) : null;
+  const roleFit = computeRoleFit(pes, aps);
+  const insight = useMemo(() => developmentInsight(pes, aps, diag, player.perf), [pes, aps, diag, player.perf]);
+  const pitchSuggestions = useMemo(() => generatePitchSuggestions(aps), [aps]);
+  const handednessSuggestions = useMemo(() => generateHandednessSuggestions(player, aps), [player, aps]);
+
+  return (
+    <div className="detail">
+      <div className="detail-topbar">
+        <button className="ghost-btn" onClick={onBack}><ChevronLeft size={16} /> Roster</button>
+        <div className="detail-actions">
+          <button className="ghost-btn" onClick={onEdit}><Pencil size={14} /> Edit</button>
+          <button className="ghost-btn danger" onClick={onDelete}><Trash2 size={14} /> Delete</button>
+        </div>
+      </div>
+
+      <div className="detail-header">
+        <div>
+          <div className="eyebrow">{player.throws === "R" ? "Right-Handed" : "Left-Handed"} {player.armSlot && `· ${player.armSlot}`}</div>
+          <h1>{player.name}</h1>
+          <div className="detail-meta">{player.role && <span>{player.role}</span>}<span>Evaluated {player.evalDate}</span></div>
+        </div>
+        <div className={`aei-hero tone-${aeiMeta.tone}`}>
+          <span className="aei-hero-label">Arsenal Efficiency Index</span>
+          <span className="aei-hero-value">{aei != null ? aei.toFixed(2) : "—"}</span>
+          <span className="aei-hero-tag">{aeiMeta.label}</span>
+        </div>
+      </div>
+
+      {!aps && (
+        <div className="callout warn"><AlertCircle size={16} /> No pitch velocity data yet — Arsenal Potential Score, AEI, and Role Fit need at least one pitch with a velocity entered.</div>
+      )}
+
+      {diag && (
+        <div className="callout diagnosis">
+          <div className="callout-title">{diag.name}</div>
+          <p>{diag.desc}</p>
+          <div className="focus-tags">{diag.focus.map((f) => <span key={f}>{f}</span>)}</div>
+        </div>
+      )}
+
+      <div className="grid grid-2">
+        <div className="panel">
+          <h3><Layers size={14} /> Performance Efficiency Score <span className="panel-total">{fmt(pes.total)} / 100</span></h3>
+          <ScoreBar
+            label="Efficiency"
+            value={pes.efficiency}
+            max={40}
+            tone="#D9A441"
+            sub={`Derived WHIP ${fmt(pes.whip, 2)}  ·  Hit Rate ${fmt(pes.hitRate)}/10  ·  Walk Rate ${fmt(pes.walkRateTerm)}/10`}
+          />
+          <ScoreBar label="Contact Suppression" value={pes.contactSuppression} max={30} tone="#6FA98B" />
+          <ScoreBar label="Situational Efficiency" value={pes.situational} max={20} tone="#7C93B0" />
+          <ScoreBar
+            label="Workload"
+            value={pes.workload}
+            max={10}
+            tone="#C3563A"
+            sub={peers.length > 0 ? `Relative to ${peers.length} other saved player${peers.length === 1 ? "" : "s"}` : "Absolute scale — add more players to compare"}
+          />
+        </div>
+
+        <div className="panel">
+          <h3><Target size={14} /> Arsenal Potential Score <span className="panel-total">{aps ? `${fmt(aps.total)} / 100` : "—"}</span></h3>
+          {aps ? (
+            <>
+              <ScoreBar label="Movement Identity Strength" value={aps.movementIdentity.total} max={30} tone="#D9A441" sub="Separation + Clarity + Execution potential (*)" />
+              <ScoreBar label="Movement Coverage" value={aps.movementCoverage} max={20} tone="#6FA98B" />
+              <ScoreBar label="Velocity Architecture" value={aps.velocityArchitecture.total} max={20} tone="#7C93B0" sub="Band diversity + velocity spread (*)" />
+              <ScoreBar label="Pitch Interaction Potential" value={aps.pitchInteraction.total} max={30} tone="#C3563A" />
+            </>
+          ) : <p className="muted">Add pitch data to calculate.</p>}
+        </div>
+      </div>
+
+      {aps && (
+        <div className="panel">
+          <h3><Wind size={14} /> Movement Profile</h3>
+          <div className="scatter-wrap">
+            <MovementPlot data={aps.plotData} />
+          </div>
+          <div className="plot-legend">
+            <span><i style={{ background: "#C3563A" }} /> Fast</span>
+            <span><i style={{ background: "#D9A441" }} /> Middle</span>
+            <span><i style={{ background: "#6FA98B" }} /> Slow</span>
+          </div>
+        </div>
+      )}
+
+      {roleFit && (
+        <div className="panel">
+          <h3><Radio size={14} /> Projected Role Fit <span className="tag-star">(*)</span></h3>
+          <div className="grid grid-4">
+            {roleFit.map((r) => (
+              <div className="role-card" key={r.role}>
+                <div className="role-card-role">{r.role}</div>
+                <div className="role-card-score">{fmt(r.score, 0)}</div>
+                <div className="role-card-label">{r.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {pitchSuggestions.length > 0 && (
+        <div className="panel">
+          <h3><Wind size={14} /> Pitch Addition Suggestions <span className="tag-star">(*)</span></h3>
+          <div className="eyebrow" style={{ marginBottom: 12 }}>
+            Arsenal type: <b style={{ color: "var(--gold)" }}>{aps.arsenalType}</b>
+          </div>
+          <div className="suggestion-list">
+            {pitchSuggestions.map((s, i) => (
+              <div className="suggestion-card" key={s.pitch}>
+                <div className="suggestion-rank">{i + 1}</div>
+                <div>
+                  <div className="suggestion-pitch">{s.pitch}</div>
+                  <p className="suggestion-reason">{s.reason}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {handednessSuggestions.length > 0 && (
+        <div className="panel">
+          <h3><Target size={14} /> Handedness-Specific Suggestions <span className="tag-star">(*)</span></h3>
+          {handednessSuggestions.map((section) => (
+            <div className="handedness-section" key={section.title}>
+              <div className="handedness-section-title">{section.title}</div>
+              {section.note && <p className="handedness-note">{section.note}</p>}
+              <div className="suggestion-list">
+                {section.items.map((item, i) => (
+                  <div className="suggestion-card" key={item.pitch}>
+                    <div className="suggestion-rank">{i + 1}</div>
+                    <div>
+                      <div className="suggestion-pitch">{item.pitch}</div>
+                      <p className="suggestion-reason">{item.reason}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="panel">
+        <h3>Pitch Arsenal</h3>
+        <table className="data-table">
+          <thead><tr><th>Type</th><th>Horz (X)</th><th>Vert (Y)</th><th>Velocity</th></tr></thead>
+          <tbody>
+            {player.pitches.filter((p) => p.type || p.velocity).map((p) => (
+              <tr key={p.id}><td>{p.type || "—"}</td><td>{p.horz || "—"}</td><td>{p.vert || "—"}</td><td>{p.velocity || "—"}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {aps && (
+        <div className="panel dev-panel">
+          <h3><Target size={14} /> Development Recommendation <span className="tag-star">(*)</span></h3>
+          <p className="dev-primary">{insight.primary}</p>
+          {insight.secondary.map((s, i) => (
+            <p className="dev-secondary" key={i}>{s}</p>
+          ))}
+        </div>
+      )}
+      {!aps && (
+        <div className="panel dev-panel">
+          <h3><Target size={14} /> Development Recommendation <span className="tag-star">(*)</span></h3>
+          <p className="dev-secondary">{insight.primary}</p>
+          <p className="dev-secondary">{insight.secondary[0]}</p>
+        </div>
+      )}
+
+      <p className="footnote">(*) Calibrated from the AEF v1.5 framework document where the original workbook left formulas incomplete or disconnected — not verbatim spreadsheet output.</p>
+    </div>
+  );
+}
+
+/* ============================================================
+   ROSTER
+   ============================================================ */
+
+function RosterCard({ player, allPlayers, onOpen }) {
+  const peers = useMemo(
+    () => allPlayers.filter((p) => p.id !== player.id).map((p) => ({ ip: safe(num(p.perf.ip)), bf: safe(num(p.perf.bf)) })),
+    [allPlayers, player.id]
+  );
+  const pes = useMemo(() => computePES(player.perf, peers), [player, peers]);
+  const aps = useMemo(() => computeAPS(player.pitches), [player]);
+  const aei = useMemo(() => computeAEI(pes, aps), [pes, aps]);
+  const meta = aeiInfo(aei);
+  return (
+    <button className="roster-card" onClick={onOpen}>
+      <div className="roster-card-top">
+        <span className="roster-name">{player.name}</span>
+        <span className={`aei-chip tone-${meta.tone}`}>{aei != null ? aei.toFixed(2) : "—"}</span>
+      </div>
+      <div className="roster-sub">{player.role || "Role not set"} · {player.throws === "R" ? "RHP" : "LHP"}</div>
+      <div className="roster-scores">
+        <span>APS <b>{aps ? fmt(aps.total, 0) : "—"}</b></span>
+        <span>PES <b>{fmt(pes.total, 0)}</b></span>
+      </div>
+      <div className={`roster-tag tone-${meta.tone}`}>{meta.label}</div>
+    </button>
+  );
+}
+
+/* ============================================================
+   APP
+   ============================================================ */
+
+function App() {
+  const [players, setPlayers] = useState([]);
+  const [view, setView] = useState("roster"); // roster | form | detail
+  const [activeId, setActiveId] = useState(null);
+  const [editing, setEditing] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+  const [saveError, setSaveError] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await storage.get(STORAGE_KEY);
+        if (res && res.value) setPlayers(JSON.parse(res.value));
+      } catch (e) {
+        // no saved data yet
+      } finally {
+        setLoaded(true);
+      }
+    })();
+  }, []);
+
+  const persist = async (next) => {
+    setPlayers(next);
+    try {
+      const res = await storage.set(STORAGE_KEY, JSON.stringify(next));
+      setSaveError(!res);
+    } catch (e) {
+      setSaveError(true);
+    }
+  };
+
+  const activePlayer = players.find((p) => p.id === activeId);
+
+  const handleSave = (player) => {
+    const exists = players.some((p) => p.id === player.id);
+    const next = exists ? players.map((p) => (p.id === player.id ? player : p)) : [...players, player];
+    persist(next);
+    setActiveId(player.id);
+    setView("detail");
+    setEditing(null);
+  };
+
+  const handleDelete = (id) => {
+    persist(players.filter((p) => p.id !== id));
+    setView("roster");
+    setActiveId(null);
+  };
+
+  return (
+    <div className="aef-app">
+      <style>{CSS}</style>
+
+      <header className="app-header">
+        <div className="app-header-inner">
+          <div className="brand">
+            <span className="brand-mark">AEF</span>
+            <span className="brand-sub">Arsenal Efficiency Framework · v1.5</span>
+          </div>
+          {view === "roster" && (
+            <button className="primary-btn" onClick={() => { setEditing(emptyPlayer()); setView("form"); }}>
+              <Plus size={16} /> New Evaluation
+            </button>
+          )}
+        </div>
+      </header>
+
+      <main className="app-main">
+        {!loaded && <p className="muted">Loading roster…</p>}
+
+        {loaded && view === "roster" && (
+          <>
+            {players.length === 0 ? (
+              <div className="empty-state">
+                <Radio size={28} />
+                <h2>No pitchers evaluated yet</h2>
+                <p>Start a new evaluation to score arsenal quality, execution efficiency, and role fit.</p>
+                <button className="primary-btn" onClick={() => { setEditing(emptyPlayer()); setView("form"); }}>
+                  <Plus size={16} /> New Evaluation
+                </button>
+              </div>
+            ) : (
+              <div className="roster-grid">
+                {players.map((p) => (
+                  <RosterCard key={p.id} player={p} allPlayers={players} onOpen={() => { setActiveId(p.id); setView("detail"); }} />
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {loaded && view === "form" && editing && (
+          <PlayerForm
+            initial={editing}
+            onCancel={() => { setEditing(null); setView(activeId ? "detail" : "roster"); }}
+            onSave={handleSave}
+          />
+        )}
+
+        {loaded && view === "detail" && activePlayer && (
+          <PlayerDetail
+            player={activePlayer}
+            allPlayers={players}
+            onBack={() => { setActiveId(null); setView("roster"); }}
+            onEdit={() => { setEditing(activePlayer); setView("form"); }}
+            onDelete={() => handleDelete(activePlayer.id)}
+          />
+        )}
+
+        {saveError && (
+          <div className="save-error"><AlertCircle size={14} /> Couldn't save — your changes may not persist.</div>
+        )}
+      </main>
+    </div>
+  );
+}
+
+/* ============================================================
+   STYLES
+   ============================================================ */
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+.aef-app {
+  --bg: #10161D;
+  --panel: #1A222C;
+  --panel-alt: #212B36;
+  --border: #2B3540;
+  --gold: #D9A441;
+  --good: #6FA98B;
+  --bad: #C3563A;
+  --text: #EDEAE0;
+  --muted: #8D98A3;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.aef-app * { box-sizing: border-box; }
+
+.app-header { border-bottom: 1px solid var(--border); background: #0D1319; position: sticky; top: 0; z-index: 10; }
+.app-header-inner { max-width: 1100px; margin: 0 auto; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; flex-direction: column; }
+.brand-mark { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 1px; color: var(--gold); line-height: 1; }
+.brand-sub { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 3px; }
+
+.app-main { max-width: 1100px; margin: 0 auto; padding: 28px 24px 80px; }
+
+.muted { color: var(--muted); }
+
+.empty-state { text-align: center; padding: 90px 20px; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.empty-state svg { color: var(--gold); margin-bottom: 6px; }
+.empty-state h2 { font-family: 'Oswald', sans-serif; color: var(--text); font-size: 22px; margin: 0; }
+.empty-state p { max-width: 360px; margin: 0 0 8px; font-size: 14px; }
+
+.roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.roster-card { text-align: left; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 16px; cursor: pointer; transition: border-color .15s, transform .15s; font-family: inherit; color: inherit; }
+.roster-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.roster-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.roster-name { font-family: 'Oswald', sans-serif; font-size: 19px; font-weight: 600; letter-spacing: .3px; }
+.roster-sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.roster-scores { display: flex; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; margin-bottom: 10px; }
+.roster-scores b { color: var(--text); }
+.roster-tag { font-size: 11px; text-transform: uppercase; letter-spacing: .6px; font-weight: 600; padding: 4px 0; }
+
+.aei-chip { font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; padding: 3px 9px; border-radius: 5px; background: var(--panel-alt); border: 1px solid var(--border); }
+
+.tone-good { color: var(--good); }
+.tone-neutral { color: var(--gold); }
+.tone-warn { color: var(--gold); }
+.tone-bad { color: var(--bad); }
+.tone-muted { color: var(--muted); }
+
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.panel h3 { font-family: 'Oswald', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.panel-total { margin-left: auto; font-family: 'IBM Plex Mono', monospace; color: var(--text); font-size: 13px; text-transform: none; letter-spacing: 0; }
+.tag-star { color: var(--gold); font-size: 11px; }
+
+.scorebar { margin-bottom: 14px; }
+.scorebar:last-child { margin-bottom: 0; }
+.scorebar-head { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+.scorebar-label { color: var(--text); }
+.scorebar-value { font-family: 'IBM Plex Mono', monospace; color: var(--text); }
+.scorebar-max { color: var(--muted); }
+.scorebar-track { height: 7px; background: var(--panel-alt); border-radius: 4px; overflow: hidden; }
+.scorebar-fill { height: 100%; border-radius: 4px; }
+.scorebar-sub { font-size: 11px; color: var(--muted); margin-top: 4px; font-style: italic; }
+
+.grid { display: grid; gap: 16px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 760px) { .grid-2, .grid-4 { grid-template-columns: 1fr 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
+.field-label { color: var(--muted); text-transform: uppercase; letter-spacing: .5px; font-size: 11px; }
+.field input, .field select { background: var(--panel-alt); border: 1px solid var(--border); color: var(--text); padding: 10px; border-radius: 5px; font-family: 'IBM Plex Mono', monospace; font-size: 16px; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--gold); }
+.field-hint { color: var(--muted); font-size: 10px; }
+
+.form-panel { max-width: 900px; margin: 0 auto; }
+.form-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.form-header h2 { font-family: 'Oswald', sans-serif; font-size: 22px; margin: 0; }
+.form-section { border-top: 1px solid var(--border); padding-top: 18px; margin-top: 18px; }
+.form-section:first-of-type { border-top: none; margin-top: 8px; }
+.form-section h3 { font-family: 'Oswald', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin: 0 0 14px; display: flex; align-items: center; gap: 7px; }
+.form-section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.form-section-head h3 { margin: 0; }
+.form-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 18px; }
+
+.pitch-table { display: flex; flex-direction: column; gap: 8px; }
+.pitch-row { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 32px; gap: 8px; align-items: center; }
+.pitch-row-head span { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); }
+.pitch-row select, .pitch-row input { background: var(--panel-alt); border: 1px solid var(--border); color: var(--text); padding: 8px 9px; border-radius: 5px; font-family: 'IBM Plex Mono', monospace; font-size: 16px; width: 100%; }
+
+.primary-btn { background: var(--gold); color: #1A1206; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-family: inherit; }
+.primary-btn:disabled { opacity: .4; cursor: not-allowed; }
+.primary-btn:hover:not(:disabled) { background: #E6B458; }
+.ghost-btn { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 9px 14px; border-radius: 6px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-family: inherit; }
+.ghost-btn:hover { border-color: var(--gold); color: var(--gold); }
+.ghost-btn.danger:hover { border-color: var(--bad); color: var(--bad); }
+.icon-btn { background: transparent; border: none; color: var(--muted); cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; }
+.icon-btn:hover { color: var(--bad); }
+
+.detail-topbar { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.detail-actions { display: flex; gap: 8px; }
+.detail-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+.detail-header h1 { font-family: 'Oswald', sans-serif; font-size: 38px; margin: 0; letter-spacing: .5px; }
+.detail-meta { display: flex; gap: 14px; color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+.aei-hero { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 26px; text-align: center; min-width: 200px; }
+.aei-hero-label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; }
+.aei-hero-value { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 40px; font-weight: 500; line-height: 1; }
+.aei-hero-tag { display: block; font-size: 12px; margin-top: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+
+.callout { border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; font-size: 14px; }
+.callout.warn { background: rgba(217,164,65,.1); border: 1px solid rgba(217,164,65,.35); display: flex; align-items: center; gap: 10px; color: var(--gold); }
+.callout.diagnosis { background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--gold); }
+.callout-title { font-family: 'Oswald', sans-serif; font-size: 17px; margin-bottom: 6px; }
+.callout.diagnosis p { color: var(--muted); margin: 0 0 10px; font-size: 13px; }
+.focus-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.focus-tags span { background: var(--panel-alt); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 11px; color: var(--text); }
+
+.scatter-wrap { margin: -4px -8px 0; }
+.plot-legend { display: flex; gap: 18px; justify-content: center; margin-top: 6px; font-size: 12px; color: var(--muted); }
+.plot-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+
+.role-card { background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+.role-card-role { font-size: 12px; color: var(--muted); margin-bottom: 8px; min-height: 30px; display: flex; align-items: center; justify-content: center; }
+.role-card-score { font-family: 'IBM Plex Mono', monospace; font-size: 26px; color: var(--gold); }
+
+.suggestion-list { display: flex; flex-direction: column; gap: 12px; }
+.suggestion-card { display: flex; gap: 14px; background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.suggestion-rank { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; color: var(--gold); min-width: 22px; }
+.suggestion-pitch { font-family: 'Oswald', sans-serif; font-size: 15px; letter-spacing: .3px; margin-bottom: 4px; }
+.suggestion-reason { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+.suggestion-qualifier { color: var(--gold); font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 400; }
+.handedness-section { margin-bottom: 18px; }
+.handedness-section:last-child { margin-bottom: 0; }
+.handedness-section-title { font-family: 'Oswald', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: .8px; color: var(--gold); margin-bottom: 8px; }
+.handedness-note { font-size: 12px; color: var(--muted); font-style: italic; margin: 0 0 10px; line-height: 1.5; }
+.role-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--text); margin-top: 4px; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { text-align: left; color: var(--muted); font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: .5px; padding: 6px 10px; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); font-family: 'IBM Plex Mono', monospace; }
+
+.footnote { color: var(--muted); font-size: 11px; text-align: center; margin-top: 24px; font-style: italic; }
+.dev-panel { border-left: 3px solid var(--good); }
+.dev-primary { font-size: 15px; color: var(--text); margin: 0 0 8px; font-weight: 500; }
+.dev-secondary { font-size: 13px; color: var(--muted); margin: 0 0 6px; line-height: 1.5; }
+.dev-secondary:last-child { margin-bottom: 0; }
+.save-error { position: fixed; bottom: 18px; right: 18px; background: var(--bad); color: white; padding: 10px 16px; border-radius: 6px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+`;
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+</script>
+</body>
+</html>
